@@ -1,0 +1,92 @@
+$primary: #2EABFF;
+$highlight: #9AD6FF;
+$green: #77BE99;
+$red: #EE6969;
+
+@import 'http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css';
+@import 'https://fonts.googleapis.com/css?family=Lato';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css';
+
+@keyframes spinner{
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+.search-container{
+	position:relative;
+	#search{
+		border: 1px solid #7e8998;
+		border-radius:3px;
+		padding-left:2rem;
+		&:focus{
+			color: #203442;
+			border: 1px solid $primary;
+			box-shadow: 0 0 5px $highlight;
+			& + .icon{
+				color: $primary;
+			}
+		}
+	}
+	.icon.ion-ios-search-strong{
+		position:absolute;
+		top:0.5rem;
+		left:0.8rem;
+	}
+	.icon.spinner{
+		position:absolute;
+		top: 0.5rem;
+		right: 0.8rem;
+		opacity:0;
+		&.is-spinning{
+			opacity:1;
+			animation-name: spinner;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+	}
+}
+.result{
+	box-shadow: 0 0 5px #ccc;
+	border-radius: 5px;
+	border: 1px solid #E8EDF2;
+	position:relative;
+	padding: 1rem 2rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	.color-band{
+		position:absolute;
+		height:100%;
+		width:10px;
+		background-color: $green;
+		left:0;
+		top:0;
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+}
+h1{
+	color: #203442;
+	line-height: 2rem;
+	font-size: 1.5rem;
+}
+h2{
+	color: #203442;
+	line-height: 1.75rem;
+	font-size: 1.25rem;
+}
+h3{
+	color: #3E5463;
+	line-height: 1.5rem;
+	font-size: 1rem;
+}
+h4,h5,h6{
+	color: #536876;
+}
+p{
+	color: #7E8998;
+}

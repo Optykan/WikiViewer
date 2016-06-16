@@ -1,9 +1,10 @@
-//don't pollute the global namespace
 (function(){
 	'use strict';
 	
 	var WikiInterface={
 		results: [],
+		last: "",
+		$template: {},
 		initialize: function(){
 			var that=this;
 			console.log("WikiInterface initialized");
@@ -12,19 +13,55 @@
 					that.query(this.value);
 				}
 			});
+			$.ajax({
+				method: "GET",
+				url: "template.html",
+				dataType: "html",
+				success: function(data){
+					that.$template=$.parseHTML(data);
+				}
+			});
+		},
+		display: function(){
+			for(var i in this.results){
+				var $current=$(this.$template[1]).clone();
+				$current.find("h1").html(this.results[i].title);
+				$current.find(".small-10.column p").html(this.results[i].snippet);
+				$current.find(".small-2.column a").attr("href", this.results[i].url);
+				$(".results").append($current);
+			}
+			console.log("loaded all");
+			$(".spinner").removeClass("is-spinning");
 		},
 		handler: function(data){
-			for(let i=0; i<data[1].length; i++){
+			if(typeof data[1][0]=='undefined'){
 				this.results.push({
-					"title": data[1][i],
-					"snippet": data[2][i],
-					"url": data[3][i]
+					"title":"No results found",
+					"snippet": "Try being more general with your search term", 
+					"url":""
 				});
+			}else{
+				for(var i=0; i<data[1].length; i++){
+					this.results.push({
+						"title": data[1][i],
+						"snippet": data[2][i],
+						"url": data[3][i]
+					});
+				}
 			}
-			console.log(this.results);
+			console.log(data);
+			this.display();
 		},
 		query: function(q){
+			if(q==this.last)
+				return;
+			this.last=q;
+			$(".results").html("");
+			this.results=[];
+			//query the wikimedia api
 			var that=this;
+			if(!$(".spinner").hasClass("is-spinning"))
+				$(".spinner").addClass("is-spinning");
 			$.ajax({
 				method: "GET",
 				url: "https://en.wikipedia.org/w/api.php",
@@ -35,7 +72,7 @@
 					"search": q,
 				},
 				headers: {
-					'Api-User-Agent': 'WikiViewer/0.1',
+					'Api-User-Agent': 'WikiViewer/0.1 || syang0525@gmail.com || Updated: 2016/06/15',
 					'Accept': 'application/json'
 				},
 				error: function(xhr, s, e){
