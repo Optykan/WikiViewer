@@ -39,7 +39,7 @@
   border-radius: 5px;
   border: 1px solid #E8EDF2;
   position: relative;
-  padding: 1rem 2rem;
+  padding: 1rem 0rem 1rem 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem; }
   .result .color-band {
@@ -51,6 +51,23 @@
     top: 0;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px; }
+  .result .vertical-divider {
+    position: absolute;
+    height: 100%;
+    border: 1px solid #E8EDF2;
+    top: 0; }
+  .result .small-2.column {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    top: 0;
+    padding-right: 0; }
+    .result .small-2.column a {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
 
 h1 {
   color: #203442;
