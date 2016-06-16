@@ -15,7 +15,7 @@
 			});
 			$.ajax({
 				method: "GET",
-				url: "template.html",
+				url: "https://raw.githubusercontent.com/Optykan/WikiViewer/master/template.html", //because codepen doesn't like more than 1 file
 				dataType: "html",
 				success: function(data){
 					that.$template=$.parseHTML(data);
@@ -52,12 +52,21 @@
 			console.log(data);
 			this.display();
 		},
+		cls: function(){
+			this.results=[];
+			$(".animated").each(function(){
+				$(this).removeClass("animated fadeInRight").addClass("animated fadeOutLeft");
+				(function(t){
+					setTimeout(function(){
+						$(t).remove();
+					},500)
+				})(this);
+			});
+		},
 		query: function(q){
 			if(q==this.last)
 				return;
-			this.last=q;
-			$(".results").html("");
-			this.results=[];
+			this.cls();
 			//query the wikimedia api
 			var that=this;
 			if(!$(".spinner").hasClass("is-spinning"))

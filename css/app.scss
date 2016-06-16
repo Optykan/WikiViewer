@@ -6,6 +6,7 @@ $red: #EE6969;
 @import 'http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css';
 @import 'https://fonts.googleapis.com/css?family=Lato';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css';
+@import 'animate.css';
 
 @keyframes spinner{
 	from{
@@ -16,6 +17,14 @@ $red: #EE6969;
 	}
 }
 
+.animated{
+	animation-duration: 0.5s;
+	@for $i from 0 to 9{
+		&:nth-child(#{$i+1}){
+			animation-delay:$i*0.1s; 
+		}	
+	}
+}
 .search-container{
 	position:relative;
 	#search{
