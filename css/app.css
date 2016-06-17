@@ -42,6 +42,8 @@
     padding-left: 2rem;
     color: #203442;
     transition: border 0.5s ease, box-shadow 0.5s ease; }
+    .search-container #search + .icon {
+      transition: color 0.5s ease; }
     .search-container #search:focus {
       transition: border 0.5s ease, box-shadow 0.5s ease;
       border: 1px solid #2EABFF;
@@ -112,22 +114,27 @@
 h1 {
   color: #203442;
   line-height: 2rem;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  font-family: "Lato", sans-serif; }
 
 h2 {
   color: #203442;
   line-height: 1.75rem;
-  font-size: 1.25rem; }
+  font-size: 1.25rem;
+  font-family: "Lato", sans-serif; }
 
 h3 {
   color: #3E5463;
   line-height: 1.5rem;
-  font-size: 1rem; }
+  font-size: 1rem;
+  font-family: "Lato", sans-serif; }
 
 h4, h5, h6 {
-  color: #536876; }
+  color: #536876;
+  font-family: "Lato", sans-serif; }
 
 p {
-  color: #7E8998; }
+  color: #7E8998;
+  font-family: "Lato", sans-serif; }
 
 /*# sourceMappingURL=app.css.map */
