@@ -19,8 +19,8 @@ $red: #EE6969;
 
 .animated{
 	animation-duration: 0.5s;
-	@for $i from 0 to 9{
-		&:nth-child(#{$i+1}){
+	@for $i from 0 to 10{
+		&:nth-child(#{$i}){
 			animation-delay:$i*0.05s; 
 		}	
 	}
@@ -101,10 +101,12 @@ $red: #EE6969;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				transition: background-color 0.5s ease;
+				text-align:center;
+				transition: background-color 0.5s ease, color 0.5s ease;
 				&:hover{
+					color: white;
 					background-color: #9AD6FF;
-					transition: background-color 0.5s ease;
+					transition: background-color 0.5s ease, color 0.5s ease;
 				}
 			}
 		}
