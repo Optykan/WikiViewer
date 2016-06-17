@@ -95,11 +95,13 @@ $red: #EE6969;
 			top: 0;
 			padding-right: 0;
 			a{
+				font-family: 'Lato', sans-serif;
 				height: 100%;
 				width: 100%;
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				transition: background-color 0.5s ease;
 				&:hover{
 					background-color: #9AD6FF;
 					transition: background-color 0.5s ease;
