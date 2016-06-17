@@ -7,6 +7,9 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+* {
+  font-family: "Lato", sans-serif; }
+
 .animated {
   animation-duration: 0.5s; }
   .animated:nth-child(0) {
@@ -44,6 +47,7 @@
       border: 1px solid #2EABFF;
       box-shadow: 0 0 5px #9AD6FF; }
       .search-container #search:focus + .icon {
+        transition: color 0.5s ease;
         color: #2EABFF; }
   .search-container .icon.ion-ios-search-strong {
     position: absolute;

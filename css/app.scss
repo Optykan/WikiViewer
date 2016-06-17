@@ -16,7 +16,9 @@ $red: #EE6969;
 		transform: rotate(360deg);
 	}
 }
-
+*{
+	font-family: "Lato", sans-serif;
+}
 .animated{
 	animation-duration: 0.5s;
 	@for $i from 0 to 10{
@@ -33,12 +35,16 @@ $red: #EE6969;
 		border-radius:3px;
 		padding-left:2rem;
 		color: #203442;
-		transition: border 0.5s ease, box-shadow 0.5s ease; 
+		transition: border 0.5s ease, box-shadow 0.5s ease;
+		&+.icon{
+			transition: color 0.5s ease;
+		} 
 		&:focus{
 			transition: border 0.5s ease, box-shadow 0.5s ease; 
 			border: 1px solid $primary;
 			box-shadow: 0 0 5px $highlight;
 			& + .icon{
+				transition: color 0.5s ease; 
 				color: $primary;
 			}
 		}
