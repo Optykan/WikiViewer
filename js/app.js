@@ -4,6 +4,8 @@
 	var WikiInterface={
 		results: [],
 		last: "",
+		animateIn: "fadeIn",
+		animateOut: "fadeOut", 
 		$template: {},
 		initialize: function(){
 			var that=this;
@@ -15,7 +17,7 @@
 			});
 			$.ajax({
 				method: "GET",
-				url: "https://raw.githubusercontent.com/Optykan/WikiViewer/master/template.html", //because codepen doesn't like more than 1 file
+				url: "template.html",
 				dataType: "html",
 				success: function(data){
 					that.$template=$.parseHTML(data);
@@ -25,6 +27,7 @@
 		display: function(){
 			for(var i in this.results){
 				var $current=$(this.$template[1]).clone();
+				$current.addClass("animated "+this.animateIn);
 				$current.find("h1").html(this.results[i].title);
 				$current.find(".small-10.column p").html(this.results[i].snippet);
 				$current.find(".small-2.column a").attr("href", this.results[i].url);
@@ -54,8 +57,9 @@
 		},
 		cls: function(){
 			this.results=[];
+			var that=this;
 			$(".animated").each(function(){
-				$(this).removeClass("animated fadeInRight").addClass("animated fadeOutLeft");
+				$(this).removeClass("animated "+that.animateIn).addClass("animated "+that.animateOut);
 				(function(t){
 					setTimeout(function(){
 						$(t).remove();
