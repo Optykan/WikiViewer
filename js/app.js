@@ -25,6 +25,8 @@
 			});
 		},
 		display: function(){
+			// $(".left").hasClass("small-6") ? $(".left").removeClass("small-6").addClass("small-10") : '';
+			// $(".right").hasClass("small-6") ? $(".right").removeClass("small-6").addClass("small-2") :'';
 			for(var i in this.results){
 				var $current=$(this.$template[1]).clone();
 				$current.addClass("animated "+this.animateIn);
