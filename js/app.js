@@ -15,6 +15,10 @@
 					that.query(this.value);
 				}
 			});
+			$(".random-side").click(function(){
+				if(!$("#container").hasClass("results-showing"))
+					window.open('https://en.wikipedia.org/wiki/Special:Random', '_blank');
+			});
 			$.ajax({
 				method: "GET",
 				url: "template.html",
@@ -25,8 +29,7 @@
 			});
 		},
 		display: function(){
-			// $(".left").hasClass("small-6") ? $(".left").removeClass("small-6").addClass("small-10") : '';
-			// $(".right").hasClass("small-6") ? $(".right").removeClass("small-6").addClass("small-2") :'';
+			$("#container").hasClass("results-showing") ? '' : $("#container").addClass("results-showing");
 			for(var i in this.results){
 				var $current=$(this.$template[1]).clone();
 				$current.addClass("animated "+this.animateIn);
@@ -35,8 +38,10 @@
 				$current.find(".small-2.column a").attr("href", this.results[i].url);
 				$(".results").append($current);
 			}
+
 			console.log("loaded all");
 			$(".spinner").removeClass("is-spinning");
+			$(".logo").removeClass("is-spinning");
 		},
 		handler: function(data){
 			if(typeof data[1][0]=='undefined'){
@@ -77,6 +82,8 @@
 			var that=this;
 			if(!$(".spinner").hasClass("is-spinning"))
 				$(".spinner").addClass("is-spinning");
+			if(!$(".logo").hasClass("is-spinning"))
+				$(".logo").addClass("is-spinning");
 			$.ajax({
 				method: "GET",
 				url: "https://en.wikipedia.org/w/api.php",

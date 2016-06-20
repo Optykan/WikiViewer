@@ -1,5 +1,5 @@
 @import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
-@import "https://fonts.googleapis.com/css?family=Lato";
+@import "https://fonts.googleapis.com/css?family=Cormorant+SC|Open+Sans";
 @import "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css";
 @import url(animate.css);
 @keyframes spinner {
@@ -35,6 +35,8 @@
 
 .column {
   transition: width 0.5s ease; }
+  .column:last-child:not(:first-child) {
+    float: none; }
 
 .logo {
   position: absolute;
@@ -45,28 +47,61 @@
   height: 250px;
   width: 250px;
   background-size: 80%;
-  border: 1px solid #9AD6FF;
+  border: 1px solid #2EABFF;
   background-position: center 70%;
   background-repeat: no-repeat;
   top: calc(50% - 125px);
-  left: calc(50% - 125px); }
+  right: calc(50% - 125px);
+  font-family: 'Cormorant SC', serif; }
   @media only screen and (max-width: 64em) {
     .logo {
       position: relative;
       top: 3rem;
       width: 125px;
       height: 125px;
-      left: calc(50% - 62.5px); } }
+      right: calc(50% - 62.5px); } }
+  .logo .wikiviewer {
+    font-family: 'Cormorant SC', serif;
+    font-size: 3rem;
+    margin-top: 110%; }
+  .logo.is-spinning:after {
+    content: '';
+    border: 3px solid black;
+    height: 250px;
+    width: 250px;
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    clip: rect(0px, 125px, 125px, 0px);
+    animation-name: spinner;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; }
 
 .row.expanded {
   height: 100vh; }
   .row.expanded .column {
     height: 100%; }
   .row.expanded .random-side {
-    background-color: #EBF3F7; }
+    background-color: #EBF3F7;
+    transition: background-color 0.5s ease; }
     @media only screen and (max-width: 64em) {
       .row.expanded .random-side {
         display: none; } }
+    .row.expanded .random-side .icon {
+      font-size: 20rem;
+      color: rgba(0, 0, 0, 0.2);
+      left: calc(75% - 140px);
+      top: calc(50% - 240px);
+      position: absolute;
+      transition: transform 0.5s ease; }
+    .row.expanded .random-side:hover {
+      background-color: #9AD6FF;
+      transition: background-color 0.5s ease;
+      cursor: pointer; }
+      .row.expanded .random-side:hover .icon {
+        transform: rotateX(180deg);
+        transition: transform 0.5s ease; }
   .row.expanded .mobile {
     display: none; }
     @media only screen and (max-width: 64em) {
@@ -75,18 +110,17 @@
 
 .random {
   position: relative;
-  top: calc(50% - 24px);
-  left: 50%;
   padding: 1rem 1rem 0.975rem 1rem;
   color: white;
   background-color: #2EABFF;
   font-family: "Lato", sans-serif;
   border: 1px solid #2EABFF;
-  transition: background-color 0.5s ease, border 0.5s ease; }
-  @media only screen and (max-width: 64em) {
+  transition: background-color 0.5s ease, border 0.5s ease;
+  left: calc(50% - 61.15px);
+  margin-top: 40%; }
+  @media only screen and (min-width: 60em) {
     .random {
-      margin-top: 40%;
-      left: calc(50% - 61.15px); } }
+      display: none; } }
   .random:hover {
     background-color: #77BE99;
     border: 1px solid #77BE99;
@@ -95,6 +129,30 @@
   .random .icon {
     padding-left: 1rem;
     vertical-align: text-bottom; }
+
+@media only screen and (min-width: 60em) {
+  #container.results-showing .search-side {
+    width: 80%; }
+    #container.results-showing .search-side .search-container {
+      top: 0;
+      margin: 1rem; }
+  #container.results-showing .random-side {
+    width: 20%;
+    position: fixed;
+    right: 0; }
+    #container.results-showing .random-side .random {
+      left: calc(50% - 61px);
+      display: block; }
+    #container.results-showing .random-side .hide.icon {
+      display: none; }
+    #container.results-showing .random-side:hover {
+      background-color: #EBF3F7;
+      cursor: initial; }
+  #container.results-showing .logo {
+    position: fixed;
+    right: calc(10% - 125px);
+    top: 2rem;
+    transition: all 0.5s ease; } }
 
 .search-container {
   position: relative;
@@ -109,17 +167,19 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid #7e8998;
+    border-bottom: 3px solid #7e8998;
     top: 50%;
+    height: 4rem;
+    font-size: 3rem;
     box-shadow: 0 0 0 #fff;
-    padding-left: 2rem;
+    padding-left: 4rem;
     color: #203442;
     transition: border 0.5s ease, box-shadow 0.5s ease; }
     .search-container #search + .icon {
       transition: color 0.5s ease; }
     .search-container #search:focus {
       transition: border 0.5s ease, box-shadow 0.5s ease;
-      border-bottom: 2px solid #2EABFF;
+      border-bottom: 3px solid #2EABFF;
       box-shadow: 0 5px 5px -5px #9AD6FF; }
       .search-container #search:focus + .icon {
         transition: color 0.5s ease;
@@ -129,8 +189,9 @@
       color: #2EABFF; }
   .search-container .icon.ion-ios-search-strong {
     position: absolute;
-    top: 0.5rem;
-    left: 0.8rem; }
+    top: 0rem;
+    left: 0.8rem;
+    font-size: 3rem; }
   .search-container .icon.spinner {
     position: absolute;
     top: 0.5rem;
@@ -172,7 +233,8 @@
       right: 0;
       height: 100%;
       top: 0;
-      padding-right: 0; }
+      padding-right: 0;
+      padding-left: 0.4rem; }
       .results .result .small-2.column a {
         font-family: 'Lato', sans-serif;
         height: 100%;
@@ -186,6 +248,8 @@
           color: white;
           background-color: #9AD6FF;
           transition: background-color 0.5s ease, color 0.5s ease; }
+    .results .result .content .small-10.column {
+      padding-left: 0; }
   @media only screen and (max-width: 64em) {
     .results {
       margin-top: 20rem; } }
@@ -215,5 +279,8 @@ h4, h5, h6 {
 p {
   color: #7E8998;
   font-family: "Lato", sans-serif; }
+
+.titanic {
+  float: none; }
 
 /*# sourceMappingURL=app.css.map */
