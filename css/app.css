@@ -38,45 +38,50 @@
   .column:last-child:not(:first-child) {
     float: none; }
 
-.logo {
+.header {
   position: absolute;
-  background-image: url("../img/logo.png");
-  background-color: #2EABFF;
-  border-radius: 50%;
-  z-index: 1;
-  height: 250px;
-  width: 250px;
-  background-size: 80%;
-  border: 1px solid #2EABFF;
-  background-position: center 70%;
-  background-repeat: no-repeat;
   top: calc(50% - 125px);
-  right: calc(50% - 125px);
-  font-family: 'Cormorant SC', serif; }
-  @media only screen and (max-width: 64em) {
-    .logo {
-      position: relative;
-      top: 3rem;
-      width: 125px;
-      height: 125px;
-      right: calc(50% - 62.5px); } }
-  .logo .wikiviewer {
-    font-family: 'Cormorant SC', serif;
-    font-size: 3rem;
-    margin-top: 110%; }
-  .logo.is-spinning:after {
-    content: '';
-    border: 3px solid black;
+  right: calc(50% - 125px); }
+  .header .logo {
+    background-image: url("../img/logo.png");
+    background-color: #2EABFF;
+    border-radius: 50%;
+    z-index: 1;
     height: 250px;
     width: 250px;
-    position: absolute;
-    top: 0;
-    border-radius: 50%;
-    clip: rect(0px, 125px, 125px, 0px);
-    animation-name: spinner;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear; }
+    background-size: 80%;
+    border: 1px solid #2EABFF;
+    background-position: center 70%;
+    background-repeat: no-repeat;
+    font-family: 'Cormorant SC', serif; }
+    @media only screen and (max-width: 64em) {
+      .header .logo {
+        position: relative;
+        top: 3rem;
+        width: 125px;
+        height: 125px;
+        right: calc(-50% + 62.5px); } }
+    @media only screen and (min-width: 64em) {
+      .header .logo.is-spinning:after {
+        content: '';
+        border: 3px solid black;
+        height: 250px;
+        width: 250px;
+        position: absolute;
+        top: 0;
+        border-radius: 50%;
+        clip: rect(0px, 125px, 125px, 0px);
+        animation-name: spinner;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear; } }
+  .header .wikiviewer {
+    font-family: 'Cormorant SC', serif;
+    font-size: 3rem;
+    margin-top: 62.5px; }
+  @media only screen and (max-width: 64em) {
+    .header {
+      right: calc(50% - 123.675px); } }
 
 .row.expanded {
   height: 100vh; }
@@ -117,10 +122,14 @@
   border: 1px solid #2EABFF;
   transition: background-color 0.5s ease, border 0.5s ease;
   left: calc(50% - 61.15px);
-  margin-top: 40%; }
-  @media only screen and (min-width: 60em) {
+  top: 55%;
+  text-align: center; }
+  @media only screen and (min-width: 64em) {
     .random {
       display: none; } }
+  @media only screen and (max-width: 64em) {
+    .random {
+      left: 0; } }
   .random:hover {
     background-color: #77BE99;
     border: 1px solid #77BE99;
@@ -141,14 +150,14 @@
     position: fixed;
     right: 0; }
     #container.results-showing .random-side .random {
-      left: calc(50% - 61px);
+      left: calc(50% - 133.5px);
       display: block; }
-    #container.results-showing .random-side .hide.icon {
-      display: none; }
     #container.results-showing .random-side:hover {
       background-color: #EBF3F7;
       cursor: initial; }
-  #container.results-showing .logo {
+    #container.results-showing .random-side .icon {
+      display: none; }
+  #container.results-showing .header {
     position: fixed;
     right: calc(10% - 125px);
     top: 2rem;
@@ -161,8 +170,10 @@
   width: 50%; }
   @media only screen and (max-width: 64em) {
     .search-container {
-      top: 15rem;
-      transform: translateX(50%); } }
+      top: 17.5rem;
+      left: calc(50% - 143.25px);
+      transform: none;
+      width: 75%; } }
   .search-container #search {
     border-top: none;
     border-left: none;
@@ -181,17 +192,29 @@
       transition: border 0.5s ease, box-shadow 0.5s ease;
       border-bottom: 3px solid #2EABFF;
       box-shadow: 0 5px 5px -5px #9AD6FF; }
+      @media only screen and (max-width: 64em) {
+        .search-container #search:focus {
+          border-bottom: 2px solid #2EABFF; } }
       .search-container #search:focus + .icon {
         transition: color 0.5s ease;
         color: #2EABFF; }
     .search-container #search:hover + .icon {
       transition: color 0.5s ease;
       color: #2EABFF; }
+    @media only screen and (max-width: 64em) {
+      .search-container #search {
+        height: 3rem;
+        padding-left: 3rem;
+        font-size: 2rem;
+        border-bottom: 2px solid #7e8998; } }
   .search-container .icon.ion-ios-search-strong {
     position: absolute;
     top: 0rem;
     left: 0.8rem;
     font-size: 3rem; }
+    @media only screen and (max-width: 64em) {
+      .search-container .icon.ion-ios-search-strong {
+        font-size: 2rem; } }
   .search-container .icon.spinner {
     position: absolute;
     top: 0.5rem;
@@ -252,7 +275,8 @@
       padding-left: 0; }
   @media only screen and (max-width: 64em) {
     .results {
-      margin-top: 20rem; } }
+      position: absolute;
+      top: 30rem; } }
 
 h1 {
   color: #203442;

@@ -29,13 +29,21 @@
 			});
 		},
 		display: function(){
+			//style the big container
 			$("#container").hasClass("results-showing") ? '' : $("#container").addClass("results-showing");
 			for(var i in this.results){
+				//clone the tempate
 				var $current=$(this.$template[1]).clone();
-				$current.addClass("animated "+this.animateIn);
-				$current.find("h1").html(this.results[i].title);
-				$current.find(".small-10.column p").html(this.results[i].snippet);
+				$current.addClass("animated "+this.animateIn); //animate it 
+				$current.find("h1").html(this.results[i].title); //change the title
+
+				//get the snippet if we have one
+				$current.find(".small-10.column p").html(this.results[i].snippet ?this.results[i].snippet : 'No preview available' ); 
+				
+				//change the redirect
 				$current.find(".small-2.column a").attr("href", this.results[i].url);
+
+				//append it to the document
 				$(".results").append($current);
 			}
 

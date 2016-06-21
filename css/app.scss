@@ -8,7 +8,7 @@ $red: #EE6969;
 @import 'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css';
 @import 'animate.css';
 @mixin large(){
-	@media only screen and (min-width: 60em){
+	@media only screen and (min-width: 64em){
 		@content;
 	}
 }
@@ -48,46 +48,53 @@ $red: #EE6969;
 		float:none;
 	}
 }
-.logo{
+.header{
 	position: absolute;
-	background-image: url("../img/logo.png");
-	background-color: $primary;
-	border-radius: 50%;
-	z-index: 1;
-	height: 250px;
-	width: 250px;
-	background-size: 80%;
-	border: 1px solid $primary;
-	background-position: center 70%;
-	background-repeat: no-repeat;
 	top: calc(50% - 125px);
 	right: calc(50% - 125px);
-	font-family: 'Cormorant SC', serif;
-	@include medium(){
-		position:relative;
-		top:3rem;
-		width:125px;
-		height:125px;
-		right: calc(50% - 62.5px);
+	.logo{
+		background-image: url("../img/logo.png");
+		background-color: $primary;
+		border-radius: 50%;
+		z-index: 1;
+		height: 250px;
+		width: 250px;
+		background-size: 80%;
+		border: 1px solid $primary;
+		background-position: center 70%;
+		background-repeat: no-repeat;
+		font-family: 'Cormorant SC', serif;
+		@include medium(){
+			position:relative;
+			top:3rem;
+			width:125px;
+			height:125px;
+			right: calc(-50% + 62.5px);
+		}
+		&.is-spinning:after{
+			@include large(){
+				content: '';
+				border: 3px solid black;
+				height: 250px;
+				width: 250px;
+				position: absolute;
+				top: 0;
+				border-radius: 50%;
+				clip: rect(0px, 125px, 125px, 0px);
+				animation-name:  spinner;
+				animation-duration:  2s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+			}
+		}
 	}
 	.wikiviewer{
 		font-family: 'Cormorant SC', serif;
 		font-size: 3rem;
-		margin-top:110%;
+		margin-top: 62.5px;
 	}
-	&.is-spinning:after{
-		content: '';
-		border: 3px solid black;
-		height: 250px;
-		width: 250px;
-		position: absolute;
-		top: 0;
-		border-radius: 50%;
-		clip: rect(0px, 125px, 125px, 0px);
-		animation-name:  spinner;
-		animation-duration:  2s;
-		animation-iteration-count: infinite;
-		animation-timing-function: linear;
+	@include medium(){
+		right: calc(50% - 123.675px);
 	}
 }
 .row.expanded{
@@ -135,9 +142,13 @@ $red: #EE6969;
 	border: 1px solid #2EABFF;
 	transition: background-color 0.5s ease, border 0.5s ease;
 	left: calc(50% - 61.15px);
-	margin-top:40%;
+	top:55%;
+	text-align:center;
 	@include large(){
 		display:none;
+	}
+	@include medium(){
+		left:0;
 	}
 	&:hover{
 		background-color: $green;
@@ -164,18 +175,18 @@ $red: #EE6969;
 			position:fixed;
 			right:0;
 			.random{
-				left: calc(50% - 61px);
+				left: calc(50% - 133.5px);
 				display:block;
-			}
-			.hide.icon{
-				display:none;
 			}
 			&:hover{
 				background-color:#EBF3F7;
 				cursor: initial; 
 			}
+			.icon{
+				display:none;
+			}
 		}
-		.logo{
+		.header{
 			position:fixed;
 			right: calc(10% - 125px);
 			top:2rem;
@@ -189,8 +200,10 @@ $red: #EE6969;
 	transform: translateX(calc(50% - 62.5px));
 	width:50%;
 	@include medium(){
-		top:15rem;
-		transform: translateX(50%);
+		top:17.5rem;
+		left: calc(50% - 143.25px);
+		transform:none;
+		width:75%;
 	}
 	#search{
 		border-top: none;
@@ -211,6 +224,9 @@ $red: #EE6969;
 			transition: border 0.5s ease, box-shadow 0.5s ease; 
 			border-bottom: 3px solid $primary;
 			box-shadow: 0 5px 5px -5px $highlight;
+			@include medium(){
+				border-bottom: 2px solid $primary;
+			}
 			& + .icon{
 				transition: color 0.5s ease; 
 				color: $primary;
@@ -220,12 +236,21 @@ $red: #EE6969;
 			transition: color 0.5s ease;
 			color:$primary;
 		}
+		@include medium(){
+			height:3rem;
+			padding-left:3rem;
+			font-size:2rem;
+			border-bottom: 2px solid #7e8998;
+		}
 	}
 	.icon.ion-ios-search-strong{
 		position:absolute;
 		top:0rem;
 		left:0.8rem;
 		font-size:3rem;
+		@include medium(){
+			font-size:2rem;
+		}
 	}
 	.icon.spinner{
 		position:absolute;
@@ -295,7 +320,8 @@ $red: #EE6969;
 		}
 	}
 	@include medium(){
-		margin-top:20rem;
+		position:absolute;
+		top:30rem;
 	}
 }
 
