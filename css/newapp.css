@@ -2,6 +2,18 @@
 @import "https://fonts.googleapis.com/css?family=Cormorant+SC|Open+Sans";
 @import "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css";
 @import url(animate.css);
+.button, #container .search-side .search-container .mobile.random, #container .random-side .random {
+  position: relative;
+  top: 50%;
+  background-color: #2EABFF;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  transition: background-color 0.3s ease; }
+  .button:hover, #container .search-side .search-container .mobile.random:hover, #container .random-side .random:hover {
+    background-color: #77BE99;
+    transition: background-color 0.3s ease; }
+
 @keyframes spinner {
   from {
     transform: rotate(0deg); }
@@ -103,22 +115,15 @@
           font-size: 2rem; } }
     #container .search-side .search-container .mobile.random {
       display: none; }
+      @media only screen and (max-width: 64em) {
+        #container .search-side .search-container .mobile.random {
+          display: block; } }
   #container .random-side {
     background-color: #EBF3F7;
     height: 100%;
     transition: background-color 0.3s ease; }
     #container .random-side .random {
-      background-color: #2EABFF;
-      position: relative;
-      top: 50%;
-      text-align: center;
-      padding: 1rem;
-      color: white;
-      display: none;
-      transition: background-color 0.3s ease; }
-      #container .random-side .random:hover {
-        background-color: #77BE99;
-        transition: background-color 0.3s ease; }
+      display: none; }
     #container .random-side:hover {
       cursor: pointer;
       background-color: #9AD6FF;
@@ -164,7 +169,7 @@
     #container .header .wikiviewer {
       font-family: "Cormorant SC", serif; }
   #container.results-showing .search-side {
-    width: 70%;
+    width: calc(100% - 300px);
     transition: width 0.3s ease; }
     @media only screen and (max-width: 64em) {
       #container.results-showing .search-side {
@@ -179,7 +184,7 @@
   #container.results-showing .random-side {
     position: fixed;
     right: 0;
-    width: 30%;
+    width: 300px;
     transition: width 0.3s ease; }
     #container.results-showing .random-side .random {
       display: block; }
@@ -188,9 +193,10 @@
     #container.results-showing .random-side:hover {
       background-color: #EBF3F7; }
   #container.results-showing .header {
+    transition: all 0.5s ease;
     position: fixed;
     top: 1rem;
-    right: calc(15% - 125px); }
+    right: 25px; }
     @media only screen and (max-width: 64em) {
       #container.results-showing .header {
         position: absolute;
@@ -200,6 +206,59 @@
     #container.results-showing .results {
       position: relative;
       top: 300px; } }
+
+.results {
+  overflow-x: hidden; }
+  .results .result {
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 5px;
+    border: 1px solid #E8EDF2;
+    position: relative;
+    padding: 1rem 0rem 1rem 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem; }
+    .results .result .color-band {
+      position: absolute;
+      height: 100%;
+      width: 10px;
+      background-color: #77BE99;
+      left: 0;
+      top: 0;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px; }
+    .results .result .vertical-divider {
+      position: absolute;
+      height: 100%;
+      border: 1px solid #E8EDF2;
+      top: 0; }
+    .results .result .small-2.column {
+      position: absolute;
+      right: 0;
+      height: 100%;
+      top: 0;
+      padding-right: 0;
+      padding-left: 0.4rem; }
+      .results .result .small-2.column a {
+        font-family: 'Lato', sans-serif;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: background-color 0.5s ease, color 0.5s ease; }
+        .results .result .small-2.column a:hover {
+          color: white;
+          background-color: #9AD6FF;
+          transition: background-color 0.5s ease, color 0.5s ease; }
+    .results .result h1 {
+      font-size: 2rem; }
+    .results .result .content .small-10.column {
+      padding-left: 0; }
+  @media only screen and (max-width: 64em) {
+    .results {
+      position: absolute;
+      top: 30rem; } }
 
 @media only screen and (max-width: 64em) {
   .random-side {
