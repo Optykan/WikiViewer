@@ -158,12 +158,20 @@ $red: #EE6969;
 			cursor:pointer;
 			background-color: $highlight;
 			transition: background-color 0.3s ease;
+			.icon:before{
+				transform: rotateX(180deg);
+				transition: transform 0.5s ease;
+			}
 		}
 		.icon{
+			&:before{
+				transform: rotateX(0deg);
+				transition: transform 0.5s  ease;
+			}
 			position:relative;
 			font-size: 20rem;
 			color: rgba(0,0,0,0.3);
-			left: calc(50% - 40px);
+			left: calc(50% - 90px);
 			top: calc(50% - 250px);
 		}
 	}

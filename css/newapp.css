@@ -128,12 +128,18 @@
       cursor: pointer;
       background-color: #9AD6FF;
       transition: background-color 0.3s ease; }
+      #container .random-side:hover .icon:before {
+        transform: rotateX(180deg);
+        transition: transform 0.5s ease; }
     #container .random-side .icon {
       position: relative;
       font-size: 20rem;
       color: rgba(0, 0, 0, 0.3);
-      left: calc(50% - 40px);
+      left: calc(50% - 90px);
       top: calc(50% - 250px); }
+      #container .random-side .icon:before {
+        transform: rotateX(0deg);
+        transition: transform 0.5s  ease; }
   #container .header {
     position: absolute;
     right: calc(50% - 123.675px);
